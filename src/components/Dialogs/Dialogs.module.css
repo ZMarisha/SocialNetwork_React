@@ -1,0 +1,12 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+}
+.avatarka {
+    display: grid;
+    padding: 10px;
+}
+.messages {
+    display: grid;
+    padding: 10px;
+}
