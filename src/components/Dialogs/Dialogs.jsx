@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem.jsx'
 import MessageItem from './MessageItem/MessageItem.jsx'
 
 const Dialogs = (props) => {
+    console.log(props)
 
     // const DATA = [
     //     {id: 1, name: 'Victor'},
@@ -16,8 +17,9 @@ const Dialogs = (props) => {
     //     {id: 3, message: 'I hate to do things which I do not like!'},
     //   ];
 
-    const dialogItem = props.data;
-    const messageItem = props.messages
+    const dialogItem = props.dialogs.USERS;
+    console.log(dialogItem)
+    const messageItem = props.dialogs.MESSAGES;
 
     let person = dialogItem.map( data => [<DialogItem name={data.name} id={data.id} key={data.id} />]);
     let messaage = messageItem.map( m => [<MessageItem message={m.message} key={m.id} />])
