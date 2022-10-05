@@ -1,0 +1,9 @@
+.avatarka {
+    height: 40px;
+    width: 50px;
+}
+.avatarka img {
+    display: block;
+    height: inherit;
+    width: inherit;
+}

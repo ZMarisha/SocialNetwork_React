@@ -3,7 +3,7 @@
     background: #44C553;
     padding-left: 15px;
     padding-top: 15px;
-    height: 600px;
+    min-height: 600px;
   }
   .navBar div {
     padding-bottom: 5px;
@@ -20,4 +20,7 @@
   }
   .settingNavBar {
     padding-top: 50px;
+  }
+  .friends {
+    margin-top: 60px;
   }

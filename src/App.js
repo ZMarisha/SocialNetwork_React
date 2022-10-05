@@ -8,6 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
+import MyFriends from './components/MyFriends/MyFriends.jsx';
 
 const App = (props) => {
   return (
@@ -17,11 +18,12 @@ const App = (props) => {
         <NavBar />
         <main className='app-wrapper-profile'>
           <Routes>
-            <Route path='/profile' element={<Profile posts={props.state.ProfilePage} />}/>
+            <Route path='/profile' element={<Profile posts={props.state.ProfilePage} addPost={props.addPost} />}/>
             <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage}/>}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
+            <Route path='/myfriends' element={<MyFriends friends={props.state.MessagesPage} />} />
           </Routes>  
         </main>
       </div>
