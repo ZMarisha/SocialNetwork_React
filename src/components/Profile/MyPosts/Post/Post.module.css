@@ -1,3 +1,17 @@
 .newPost {
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+.smileyPost {
+  height: 40px;
+  padding-right: 15px;
+}
+.smileyPost img {
+  display: block;
+  height: inherit;
+}
+.likePost {
+  padding-left: 15px;
 }
