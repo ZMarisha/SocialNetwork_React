@@ -11,6 +11,7 @@ import Settings from './components/Settings/Settings.jsx';
 import MyFriends from './components/MyFriends/MyFriends.jsx';
 
 const App = (props) => {
+  console.log(props.store)
   return (
     <BrowserRouter>
       <div className='container app-wrapper'>
@@ -18,8 +19,8 @@ const App = (props) => {
         <NavBar />
         <main className='app-wrapper-profile'>
           <Routes>
-            <Route path='/profile' element={<Profile posts={props.state.ProfilePage} addPost={props.addPost} />}/>
-            <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage}/>}/>
+            <Route path='/profile' element={<Profile profilePage={props.state.ProfilePage} dispatch={props.dispatch} />}/>
+            <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage} />}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
