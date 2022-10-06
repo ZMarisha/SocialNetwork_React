@@ -2,11 +2,10 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
 const Profile = (props) => {
-  console.log(props)
     return (
       <div>
         <ProfileInfo />
-        <MyPosts posts={props.posts.POSTS} addPost={props.addPost} />
+        <MyPosts posts={props.profilePage.POSTS} dispatch={props.dispatch} updateText={props.profilePage.updateText}  />
       </div>
     )
 }
