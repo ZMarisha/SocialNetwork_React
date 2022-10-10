@@ -4,13 +4,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import store from './components/Redux/State.js';
+import { addNewPostCreator, updateNewTextCreator, updateTextMessageCreator, sendMessageCreator } from './components/Redux/State.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerender = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} />
+      <App state={state} dispatch={store.dispatch.bind(store)} 
+                          updateNewTextCreator={updateNewTextCreator} 
+                          addNewPostCreator={addNewPostCreator} 
+                          updateTextMessageCreator={updateTextMessageCreator} 
+                          sendMessageCreator={sendMessageCreator} 
+                          updateTextMessage={store._STATE.MessagesPage.updateTextMessage} />
     </React.StrictMode>
   );
 }

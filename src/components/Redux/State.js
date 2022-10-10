@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_TEXT = 'UPDATE_NEW_TEXT';
+const UPDATE_NEW_MESSAGE = 'UPDATE_NEW_MESSAGE';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+
 let store = {
     _STATE: {
     
@@ -23,10 +28,7 @@ let store = {
                 {id: 3, message: 'I hate to do things which I do not like!'},
                 {id: 4, message: 'Hi!'},
             ],
-            MyMessages: [
-                {id: 1, myMessage: 12}
-            ],
-            updateTextMessage: 'text'
+            updateTextMessage: ''
         }
     },
     _rerenderEntireTree () {
@@ -56,7 +58,7 @@ let store = {
     //     this._rerenderEntireTree(this._STATE);
     // },
     dispatch (action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let post = {
                 id: 4,
                 post: this._STATE.ProfilePage.updateText,
@@ -67,12 +69,30 @@ let store = {
         this._STATE.ProfilePage.updateText = ''
         this._rerenderEntireTree(this._STATE);
 
-        } else if (action.type === 'UPDATE-NEW-TEXT') {
+        } else if (action.type === UPDATE_NEW_TEXT) {
             this._STATE.ProfilePage.updateText = action.text;
+            this._rerenderEntireTree(this._STATE);
+
+        } else if (action.type === UPDATE_NEW_MESSAGE) {
+            this._STATE.MessagesPage.updateTextMessage = action.newMessage;
+            this._rerenderEntireTree(this._STATE);
+
+        } else if (action.type === SEND_MESSAGE) {
+            let newMessages = {
+                id: 6,
+                message: this._STATE.MessagesPage.updateTextMessage
+            }
+            this._STATE.MessagesPage.MESSAGES.push(newMessages);
+            this.updateTextMessage = '';
             this._rerenderEntireTree(this._STATE);
         }
     }
-}
+};
+
+export let addNewPostCreator = () => ( {type: ADD_POST} ); //jbject
+export let updateNewTextCreator = (text) => ( {type: UPDATE_NEW_TEXT, text: text}); //object
+export let updateTextMessageCreator = (text) => ( {type: UPDATE_NEW_MESSAGE, newMessage: text} )
+export let sendMessageCreator = () => ( {type: SEND_MESSAGE} )
 
 window.store = store;
 
