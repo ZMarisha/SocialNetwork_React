@@ -21,7 +21,7 @@ const Dialogs = (props) => {
     const dialogItem = props.dialogs.USERS;
     console.log(dialogItem)
     const messageItem = props.dialogs.MESSAGES;
-    const updateTextMessage = props.updateTextMessage
+    const updateTextMessage = props.dialogs.updateTextMessage
 
     let person = dialogItem.map( data => [<DialogItem name={data.name} id={data.id} avatarka={data.avatarka} key={data.id} />]);
     let message = messageItem.map( m => [<MessageItem message={m.message} key={m.id} />])

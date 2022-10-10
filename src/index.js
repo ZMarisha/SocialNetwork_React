@@ -3,8 +3,9 @@ import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import store from './components/Redux/State.js';
-import { addNewPostCreator, updateNewTextCreator, updateTextMessageCreator, sendMessageCreator } from './components/Redux/State.js'
+import store from './components/redux/store.js';
+import { addNewPostCreator, updateNewTextCreator } from './components/redux/profileReducer.js';
+import { updateTextMessageCreator, sendMessageCreator } from './components/redux/messagesReducer.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,7 +17,7 @@ let rerender = (state) => {
                           addNewPostCreator={addNewPostCreator} 
                           updateTextMessageCreator={updateTextMessageCreator} 
                           sendMessageCreator={sendMessageCreator} 
-                          updateTextMessage={store._STATE.MessagesPage.updateTextMessage} />
+                           />
     </React.StrictMode>
   );
 }
