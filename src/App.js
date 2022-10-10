@@ -19,8 +19,14 @@ const App = (props) => {
         <NavBar />
         <main className='app-wrapper-profile'>
           <Routes>
-            <Route path='/profile' element={<Profile profilePage={props.state.ProfilePage} dispatch={props.dispatch} />}/>
-            <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage} />}/>
+            <Route path='/profile' element={<Profile profilePage={props.state.ProfilePage} 
+                                                      dispatch={props.dispatch} 
+                                                      updateNewTextCreator={props.updateNewTextCreator} 
+                                                      addNewPostCreator={props.addNewPostCreator}  />}/>
+            <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage} 
+                                                      dispatch={props.dispatch}
+                                                      updateTextMessageCreator={props.updateTextMessageCreator} 
+                                                      sendMessageCreator={props.sendMessageCreator}  />}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

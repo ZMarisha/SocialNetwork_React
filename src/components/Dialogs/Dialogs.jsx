@@ -1,3 +1,4 @@
+import React from 'react'
 import d from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem.jsx'
 import MessageItem from './MessageItem/MessageItem.jsx'
@@ -20,9 +21,20 @@ const Dialogs = (props) => {
     const dialogItem = props.dialogs.USERS;
     console.log(dialogItem)
     const messageItem = props.dialogs.MESSAGES;
+    const updateTextMessage = props.updateTextMessage
 
     let person = dialogItem.map( data => [<DialogItem name={data.name} id={data.id} avatarka={data.avatarka} key={data.id} />]);
-    let messaage = messageItem.map( m => [<MessageItem message={m.message} key={m.id} />])
+    let message = messageItem.map( m => [<MessageItem message={m.message} key={m.id} />])
+
+    
+    let onChangeMessage = (event) => {
+        let text = event.target.value;
+        props.dispatch(props.updateTextMessageCreator(text))
+    }
+
+    let sendMessage = () => {
+        props.dispatch(props.sendMessageCreator())
+    }
     
     return (
         <div>
@@ -32,7 +44,13 @@ const Dialogs = (props) => {
                   {person}
                 </div>
                 <div className={d.messages}>
-                    {messaage}
+                    {message}
+                    <div className={d.interTextMessage}>   
+                        <textarea value={updateTextMessage} onChange={onChangeMessage} placeholder='your message...' />
+                        <div className={d.sendMessage}>
+                            <button onClick={sendMessage} type='submit'>Send message</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
