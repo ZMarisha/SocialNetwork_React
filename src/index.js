@@ -3,27 +3,23 @@ import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import store from './components/redux/store.js';
-import { addNewPostCreator, updateNewTextCreator } from './components/redux/profileReducer.js';
-import { updateTextMessageCreator, sendMessageCreator } from './components/redux/messagesReducer.js'
+import store from './components/redux/reduxStore.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerender = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} 
-                          updateNewTextCreator={updateNewTextCreator} 
-                          addNewPostCreator={addNewPostCreator} 
-                          updateTextMessageCreator={updateTextMessageCreator} 
-                          sendMessageCreator={sendMessageCreator} 
-                           />
+      <App state={state} store={store} />
     </React.StrictMode>
   );
 }
 
 rerender(store.getState());
-store.subscribe(rerender);
+store.subscribe(() => {
+  let state = store.getState();
+  rerender(state)
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
