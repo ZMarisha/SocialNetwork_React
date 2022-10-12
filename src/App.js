@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
@@ -18,14 +18,10 @@ const App = (props) => {
         <NavBar />
         <main className='app-wrapper-profile'>
           <Routes>
-            <Route path='/profile' element={<Profile profilePage={props.state.ProfilePage} 
-                                                      dispatch={props.dispatch} 
-                                                      updateNewTextCreator={props.updateNewTextCreator} 
-                                                      addNewPostCreator={props.addNewPostCreator}  />}/>
-            <Route path='/dialogs/*' element={<Dialogs dialogs={props.state.MessagesPage} 
-                                                      dispatch={props.dispatch}
-                                                      updateTextMessageCreator={props.updateTextMessageCreator} 
-                                                      sendMessageCreator={props.sendMessageCreator}  />}/>
+            <Route path='/profile' element={<Profile store={props.store}
+                                                      state={props.state}  />}/>
+            <Route path='/dialogs/*' element={<DialogsContainer store={props.store}
+                                                      state={props.state} />}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

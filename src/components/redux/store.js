@@ -3,7 +3,7 @@ import { messagesReducer } from "./messagesReducer.js";
 
 
 let store = {
-    _STATE: {
+    _state: {
     
         ProfilePage: {
             POSTS: [
@@ -35,7 +35,7 @@ let store = {
     },
 
     getState () {
-        return this._STATE;
+        return this._state;
     },
     subscribe (observer) {
         this._rerenderEntireTree = observer;
@@ -43,9 +43,9 @@ let store = {
 
     dispatch (action) {
 
-        this._STATE.ProfilePage = profileReducer(this._STATE.ProfilePage, action);
-        this._STATE.MessagesPage = messagesReducer(this._STATE.MessagesPage, action)
-        this._rerenderEntireTree(this._STATE);
+        this._state.ProfilePage = profileReducer(this._state.ProfilePage, action);
+        this._state.MessagesPage = messagesReducer(this._state.MessagesPage, action)
+        this._rerenderEntireTree(this._state);
     }
 };
 
