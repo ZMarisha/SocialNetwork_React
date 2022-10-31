@@ -3,7 +3,7 @@
     background: #44C553;
     padding-left: 15px;
     padding-top: 15px;
-    min-height: 600px;
+    min-height: 100vh;
   }
   .navBar div {
     padding-bottom: 5px;

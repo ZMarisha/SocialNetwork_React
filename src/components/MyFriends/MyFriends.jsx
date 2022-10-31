@@ -1,3 +1,4 @@
+import React from "react";
 import f from './MyFriends.module.css'
 
 const MyFriends = (props) => {

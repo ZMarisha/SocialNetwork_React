@@ -1,3 +1,4 @@
+import React from "react";
 import p from './Post.module.css'
 
 const Post = (props) => {
@@ -7,7 +8,7 @@ const Post = (props) => {
         </div>
         <div>
             <p>{props.post}</p>
-            <div className='likePost'>
+            <div className={p.likePost}>
               <p>like <span>- ({props.likeCount})</span></p>
             </div>
         </div>
