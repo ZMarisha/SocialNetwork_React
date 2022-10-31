@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 5fr;
+    margin-top: 50px;
 }
 .avatarka {
     padding: 10px;

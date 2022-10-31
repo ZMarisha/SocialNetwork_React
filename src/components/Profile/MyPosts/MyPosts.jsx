@@ -3,7 +3,6 @@ import p from './MyPosts.module.css'
 import Post from './Post/Post.jsx';
 
 const MyPosts = (props) => {
-    console.log(props.postsData)
 
     let addNewPost = () => {
         props.addPost();

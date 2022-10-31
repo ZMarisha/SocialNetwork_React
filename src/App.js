@@ -8,9 +8,10 @@ import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
 import MyFriends from './components/MyFriends/MyFriends.jsx';
+import FindUsersContainer from './components/FindUsers/FindUsersContainer';
 
 const App = (props) => {
-  console.log(props.store)
+  
   return (
     <BrowserRouter>
       <div className='container app-wrapper'>
@@ -24,6 +25,7 @@ const App = (props) => {
                                                       state={props.state} />}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
+            <Route path='/findusers' element={<FindUsersContainer />}/>
             <Route path='/settings' element={<Settings />} />
             <Route path='/myfriends' element={<MyFriends friends={props.state.MessagesPage} />} />
           </Routes>  
