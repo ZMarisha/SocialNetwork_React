@@ -1,0 +1,70 @@
+.userInfo {
+    margin-top: 50px;
+}
+.parent {
+    margin-bottom: 50px;
+    display: flex;
+}
+.avatarka {
+    height: 80px;
+    width: 120px;
+    margin-right: 100px;
+}
+.avatarka img {
+    display: block;
+    height: inherit;
+    width: inherit;
+}
+.btn {
+    width: 120px;
+    height: 40px;
+}
+.btn button{ 
+    text-align: center;
+    width: inherit;
+    background: #44C553;
+    height: inherit;
+    line-height: 40px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+}
+.description {
+    border: 1px solid green;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    height: 80px;
+}
+.text {
+    display: grid;
+    align-items: center;
+}
+.userName {
+    font-weight: 600;
+    font-size: 18px;
+}
+.status {
+    color: gray;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.notActive {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.selectedPage {
+    font-weight: 600;
+    font-size: 18px;
+    border: 1px solid;
+    padding: 5px;
+}
