@@ -5,9 +5,9 @@ const MyFriends = (props) => {
     console.log(props.friends.USERS)
     
     let dataFriends = props.friends.USERS.map(data => (
-        <div>
+        <div key={data.id}>
             <div className={f.avatarka}>
-                <img src={data.avatarka} alt='name' key={data.id} />
+                <img src={data.avatarka} alt='name' />
             </div>
             <div>
                 <p>{data.name}</p>
