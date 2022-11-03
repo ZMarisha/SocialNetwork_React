@@ -1,3 +1,6 @@
+.userBlock {
+    position: relative;
+}
 .userInfo {
     margin-top: 50px;
 }
