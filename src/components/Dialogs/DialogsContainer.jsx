@@ -1,5 +1,5 @@
 import Dialogs from './Dialogs.jsx';
-import { updateTextMessageCreator, sendMessageCreator } from '../redux/messagesReducer.js';
+import { updateTextMessageCreator, sendMessageCreator } from '../../redux/messagesReducer.js';
 import { connect } from 'react-redux';
 
 

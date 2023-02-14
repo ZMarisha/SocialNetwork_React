@@ -9,6 +9,7 @@ import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
 import MyFriends from './components/MyFriends/MyFriends.jsx';
 import FindUsersContainer from './components/FindUsers/FindUsersContainer';
+import UsersProfile from './components/FindUsers/UsersProfile/UsersProfile';
 
 const App = (props) => {
   
@@ -19,13 +20,14 @@ const App = (props) => {
         <NavBar />
         <main className='app-wrapper-profile'>
           <Routes>
-            <Route path='/profile' element={<Profile store={props.store}
+            <Route path='/myprofile' element={<Profile store={props.store}
                                                       state={props.state}  />}/>
             <Route path='/dialogs/*' element={<DialogsContainer store={props.store}
                                                       state={props.state} />}/>
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
-            <Route path='/findusers' element={<FindUsersContainer />}/>
+            <Route path='/findusers' element={<FindUsersContainer />} />
+            <Route path='/profile/:userId' element={<UsersProfile />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/myfriends' element={<MyFriends friends={props.state.MessagesPage} />} />
           </Routes>  
