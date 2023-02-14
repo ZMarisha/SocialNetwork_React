@@ -1,8 +1,11 @@
+import { getCurrentUsers, getNextUsers, getUserById } from "../API/api";
+
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-// const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT';
+const USER = 'USER';
 const PRELOADER = 'PRELOADER';
 
 let initialState = {
@@ -10,7 +13,8 @@ let initialState = {
     pageSize: 5,
     totalUsers: 120,
     currentPage: 1,
-    isPreloader: false
+    isPreloader: false,
+    user: null
 }
 
 const findusersReducer = (state = initialState, action) => {
@@ -42,11 +46,11 @@ const findusersReducer = (state = initialState, action) => {
         case SET_CURRENT_PAGE: 
             return {...state, currentPage: action.currentPage};
 
-        // case SET_TOTAL_COUNT: 
-        //     return {...state, totalUsers: action.totalCount};
-
         case PRELOADER: 
-            return {...state, isPreloader: action.isPreloader}
+            return {...state, isPreloader: action.isPreloader};
+
+        case USER: 
+                return {...state, user: action.user}
 
         default: 
             return state;
@@ -57,7 +61,27 @@ export const follow = (userId) => ({type: FOLLOW, userId});
 export const unfollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const togglePreloader = (isPreloader) => ({type: PRELOADER, isPreloader})
-// export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount});
+export const togglePreloader = (isPreloader) => ({type: PRELOADER, isPreloader});
+export const setUser = (user) => ({type: USER, user});
+
+export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+        dispatch(togglePreloader(true));
+        getCurrentUsers(currentPage, pageSize).then(response => { dispatch(setUsers(response.data.items));
+            dispatch(togglePreloader(false));
+    })
+}
+
+export const getNextUsersThunkCreator = (pageNumber, pageSize) => (dispatch) => {
+            dispatch(togglePreloader(true));
+            dispatch(setCurrentPage(pageNumber))
+            getNextUsers(pageNumber, pageSize).then(response => { dispatch(setUsers(response.data.items))
+                        dispatch(togglePreloader(false))
+            })
+}
+
+export const getUsersByIdThunkCreator = (userId) => (dispatch) => {
+    getUserById(userId).then(response => dispatch(setUser(response)))
+}
+
 
 export default findusersReducer;

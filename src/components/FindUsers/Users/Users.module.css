@@ -1,3 +1,6 @@
+.userBlock {
+    position: relative;
+}
 .userInfo {
     margin-top: 50px;
 }
@@ -10,7 +13,12 @@
     width: 120px;
     margin-right: 100px;
 }
-.avatarka img {
+.link {
+    display: block;
+    height: inherit;
+    width: inherit;
+}
+.link img {
     display: block;
     height: inherit;
     width: inherit;
@@ -68,3 +76,4 @@
     border: 1px solid;
     padding: 5px;
 }
+

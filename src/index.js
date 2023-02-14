@@ -3,12 +3,11 @@ import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import store from './components/redux/reduxStore.js';
+import store from './redux/reduxStore.js';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// let rerender = (state) => {
   root.render(
     // <React.StrictMode>
       <Provider store={store} >
@@ -16,13 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
       </Provider>
     // </React.StrictMode>
   );
-// }
 
-// rerender(store.getState());
-// store.subscribe(() => {
-//   let state = store.getState();
-//   rerender(state)
-// });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

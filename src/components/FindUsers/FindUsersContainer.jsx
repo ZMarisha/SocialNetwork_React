@@ -1,6 +1,26 @@
+import React from "react";
 import { connect } from "react-redux";
-import { follow, setUsers, unfollow, setCurrentPage, togglePreloader } from "../redux/findusersReducer";
-import FindUsers from "./FindUsers";
+import { follow, setUsers, unfollow, setCurrentPage, togglePreloader } from "../../redux/findusersReducer";
+import Users from "./Users/Users";
+import { getUsersThunkCreator, getNextUsersThunkCreator } from "../../redux/findusersReducer";
+
+
+class FindUsers extends React.Component {
+
+    componentDidMount() {
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.getNextUsersThunkCreator(pageNumber, this.props.pageSize)
+    }
+
+    render() {
+        
+        return <Users follow={this.props.follow} unfollow={this.props.unfollow} onPageChanged={this.onPageChanged} totalUsers={this.props.totalUsers} pageSize={this.props.pageSize} isPreloader={this.props.isPreloader} currentPage={this.props.currentPage} users={this.props.users} />
+    
+    } 
+}
 
 let mapStateToProps = (state) => {
     return { users: state.UsersPage.users,
@@ -11,42 +31,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAction(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAction(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAction(users))
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAction(currentPage))
-//         },
-//         // setTotalCount: (totalCount) => {
-//         //     dispatch(setTotalCountAction(totalCount))
-//         // },
-//         togglePreloader: (isPreloader) => {
-//             dispatch(toggleIsPreloader(isPreloader))
-//         }
-//     }
-// }
 
-
-// сократили
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow,
-//         unfollow,
-//         setUsers,
-//         setCurrentPage,
-//         // setTotalCount,
-//         togglePreloader
-//     }
-// } удалили и перенесли как объект connect в вторым параметром
-
-const FindUsersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, togglePreloader} )(FindUsers);
+const FindUsersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, 
+                                    togglePreloader, getUsersThunkCreator, getNextUsersThunkCreator} )(FindUsers);
 
 export default FindUsersContainer;
